@@ -43,7 +43,6 @@
     { nome:'',            logo:'uploads/Group.svg' },
     { nome:'',            logo:'uploads/Group-1.svg' },
     { nome:'iFood Benefícios', logo:'uploads/ifood beneficios 1.svg' },
-    { nome:'LG',          logo:'uploads/LG 2.svg' },
     { nome:'Elsa',        logo:'uploads/Logo Elsa horizontal sem bordas 1.svg' },
     { nome:'SGG',         logo:'uploads/logo sgg alta.svg' },
     { nome:'Kairós',      logo:'uploads/Logo-Kairos-Verde-Chapado 1.svg' },
@@ -57,12 +56,10 @@
     { nome:'Ticket',      logo:'uploads/ticket - sem bordas.svg' },
     { nome:'TOTVS',       logo:'uploads/totvs atualizado 1.svg' },
     { nome:'',            logo:'uploads/Union.svg' },
-    { nome:'UP Brasil',   logo:'uploads/UP BRASIL 1.svg' },
     { nome:'',            logo:'uploads/Vector.svg' },
     { nome:'',            logo:'uploads/Vector-1.svg' },
     { nome:'Vende-C',     logo:'uploads/VENDE-C 1.svg' },
     { nome:'VR',          logo:'uploads/VR 1.svg' },
-    { nome:'VT',          logo:'uploads/vt 1.svg' },
     { nome:'Wellhub',     logo:'uploads/WELLHUB 1.svg' }
   ];
 
@@ -133,11 +130,26 @@
   function submitLead(e){
     e.preventDefault();
     const f = e.target;
-    const nome = (f.nome.value || '').split(' ')[0] || 'tudo certo';
-    f.innerHTML = '<div class="field full" style="text-align:center; padding:22px 0">'
-      + '<div style="width:64px;height:64px;border-radius:50%;background:var(--rh-green);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:32px;color:#0B0B2D">✓</div>'
-      + '<div class="display" style="font-size:30px">Recebemos, ' + nome + '!</div>'
-      + '<p style="margin-top:10px;color:rgba(255,255,255,.9);font-size:15px;line-height:1.5">Nosso time comercial entra em contato com a proposta completa em até 1 dia útil.</p>'
-      + '</div>';
+    const nome = encodeURIComponent((f.nome.value || '').split(' ')[0] || '');
+    window.location.href = 'obrigado.html?nome=' + nome;
     return false;
   }
+
+  /* ---- Lead modal (CTAs distribuídos pela página abrem o mesmo formulário em pop-up) ---- */
+  function openLeadModal(tier){
+    const modal = document.getElementById('leadModal');
+    if (!modal) return;
+    const tierField = modal.querySelector('input[name="cota"]');
+    if (tierField) tierField.value = tier || '';
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    const firstInput = modal.querySelector('input[name="nome"]');
+    if (firstInput) setTimeout(() => firstInput.focus(), 50);
+  }
+  function closeLeadModal(){
+    const modal = document.getElementById('leadModal');
+    if (!modal) return;
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLeadModal(); });

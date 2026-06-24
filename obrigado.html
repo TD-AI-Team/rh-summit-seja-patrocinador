@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Recebemos sua proposta — RH Summit 2027</title>
+<link rel="stylesheet" href="fonts.css">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .ty-hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 40px 0; }
+  .ty-card { max-width: 620px; padding: 0 24px; }
+  .ty-check { width: 80px; height: 80px; border-radius: 50%; background: var(--rh-green); display: flex; align-items: center; justify-content: center; margin: 0 auto 28px; font-size: 40px; color: #0B0B2D; box-shadow: var(--glow-purple); }
+  .ty-logo { height: 32px; width: auto; margin-bottom: 32px; }
+  .ty-actions { margin-top: 32px; display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+</style>
+</head>
+<body>
+
+<section class="hero ty-hero">
+  <div class="hero-bg"></div>
+  <div class="hero-glow"></div>
+  <div class="wrap ty-card" style="position:relative">
+    <img src="assets/misc/asset-0.svg" alt="RH Summit" class="ty-logo">
+    <div class="ty-check">✓</div>
+    <div class="eyebrow" style="color:rgba(255,255,255,.9)">Proposta recebida</div>
+    <h1 class="display" style="font-size:clamp(34px,5vw,56px); margin-top:16px">
+      Obrigado<span id="tyNome">!</span><br><span class="pink">vamos falar em breve.</span>
+    </h1>
+    <p class="lead" style="margin-top:18px; color:rgba(255,255,255,.9)">
+      Nosso time comercial vai analisar seu perfil e entrar em contato com a proposta completa,
+      cotas e valores em até <strong>1 dia útil</strong>.
+    </p>
+    <div class="ty-actions">
+      <a href="index.html" class="btn btn-action btn-lg">Voltar para o site ↗</a>
+      <a href="index.html#cotas" class="btn btn-ghost btn-lg">Ver cotas de patrocínio</a>
+    </div>
+  </div>
+</section>
+
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const nome = params.get('nome');
+  if (nome) {
+    document.getElementById('tyNome').textContent = ', ' + decodeURIComponent(nome) + '!';
+  }
+</script>
+
+</body></html>

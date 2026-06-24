@@ -15,6 +15,7 @@
   <div class="hero-glow"></div>
   <div class="wrap hero-inner">
     <div>
+      <img src="assets/misc/asset-0.svg" alt="RH Summit" class="hero-logo">
       <div class="eyebrow" style="color:rgba(255,255,255,.9)">Próxima edição · 2027 · Expo Center Norte — SP</div>
       <h1 class="display" style="font-size:clamp(46px,6.5vw,96px); margin-top:20px;">
         Esteja onde o<br><span class="pink">RH faz negócio.</span>
@@ -25,16 +26,16 @@
       </p>
     </div>
 
-    <div class="formcard" id="lead">
+    <div class="formcard formcard-feat" id="lead">
       <h3>Quero patrocinar</h3>
-      <p class="fsub">Preencha e nosso time comercial envia cotas, ativos e valores em até 1 dia útil.</p>
       <form id="leadForm" onsubmit="return submitLead(event)">
-        <div class="field full"><label>Nome</label><input name="nome" placeholder="Seu nome completo" required=""></div>
-        <div class="field"><label>E-mail corporativo</label><input name="email" type="email" placeholder="voce@empresa.com" required=""></div>
-        <div class="field"><label>WhatsApp</label><input name="whatsapp" placeholder="(11) 99999-9999" required=""></div>
+        <input type="hidden" name="cota" value="">
+        <div class="field full"><label>Nome</label><input name="nome" placeholder="Seu nome completo" required></div>
+        <div class="field"><label>E-mail corporativo</label><input name="email" type="email" placeholder="voce@empresa.com" required></div>
+        <div class="field"><label>WhatsApp</label><input name="whatsapp" placeholder="(11) 99999-9999" required></div>
         <div class="field"><label>Funcionários</label>
-          <select name="funcionarios" required="">
-            <option value="" selected="" disabled="">Selecione</option>
+          <select name="funcionarios" required>
+            <option value="" selected disabled>Selecione</option>
             <option>1 — 50</option>
             <option>51 — 200</option>
             <option>201 — 1.000</option>
@@ -43,8 +44,8 @@
           </select>
         </div>
         <div class="field"><label>Faturamento anual</label>
-          <select name="faturamento" required="">
-            <option value="" selected="" disabled="">Selecione</option>
+          <select name="faturamento" required>
+            <option value="" selected disabled>Selecione</option>
             <option>Até R$ 5 mi</option>
             <option>R$ 5 mi — R$ 50 mi</option>
             <option>R$ 50 mi — R$ 300 mi</option>
@@ -53,7 +54,7 @@
           </select>
         </div>
         <div class="field full"><label>Por que você quer patrocinar o RH Summit?</label>
-          <textarea name="motivo" placeholder="Conte seu objetivo: geração de leads, branding, lançamento de produto…"></textarea>
+          <textarea name="motivo" placeholder="Conte seu objetivo: geração de leads, branding, lançamento de produto…" required></textarea>
         </div>
         <div class="field full"><button type="submit" class="btn btn-action btn-lg" style="width:100%; justify-content:center">Quero patrocinar o RH Summit ↗</button></div>
       </form>
@@ -67,8 +68,7 @@
     <div class="car-head" style="gap: 20px">
       <div>
         <div class="eyebrow">Por que patrocinar</div>
-        <h2 class="display" style="font-size:clamp(36px,4.8vw,64px); margin-top:12px">SUA MARCA ONDE AS
-DECISÕES ACONTECEM</h2>
+        <h2 class="display" style="font-size:clamp(36px,4.8vw,64px); margin-top:12px">SUA MARCA ONDE AS<br>DECISÕES ACONTECEM</h2>
       </div>
       <div class="car-arrows">
         <button onclick="mvScroll(-1)" aria-label="Anterior">‹</button>
@@ -76,6 +76,9 @@ DECISÕES ACONTECEM</h2>
       </div>
     </div>
     <div class="mv-track" id="mvTrack"></div>
+    <div style="text-align:center; margin-top:36px">
+      <button type="button" class="btn btn-action btn-lg" onclick="openLeadModal()">Quero patrocinar o RH Summit ↗</button>
+    </div>
   </div>
 </section>
 
@@ -87,7 +90,20 @@ DECISÕES ACONTECEM</h2>
         <div class="eyebrow">A maior comunidade de RH do Brasil</div>
         <h2 class="display" style="font-size: clamp(32px,4.3vw,58px); margin-top: 14px; color: rgb(255, 255, 255); font-family: &quot;Big Shoulders&quot;; font-weight: 800">Amplifique sua<br>marca onde a maior <span class="pink" style="color: rgb(255, 255, 255)">comunidade de<br>RH</span> do Brasil está </h2>
       </div>
-      <div class="ti-img"><img src="assets/photos/publico-1.jpg" alt="Comunidade RH Summit"></div>
+      <div class="ti-img growth-chart" role="img" aria-label="Gráfico de crescimento do mercado global de tecnologia para RH, de US$ 40,5 bilhões em 2024 a US$ 81,8 bilhões em 2032">
+        <div class="gc-head">
+          <div class="gc-kicker">Mercado de RH em expansão</div>
+          <div class="gc-title">+9,2% ao ano</div>
+        </div>
+        <div class="gc-bars">
+          <div class="gc-bar"><span class="gc-val">US$ 40,5 bi</span><div class="gc-fill" style="height:48%"></div><span class="gc-yr">2024</span></div>
+          <div class="gc-bar"><span class="gc-val">US$ 48,4 bi</span><div class="gc-fill" style="height:58%"></div><span class="gc-yr">2026</span></div>
+          <div class="gc-bar"><span class="gc-val">US$ 57,6 bi</span><div class="gc-fill" style="height:70%"></div><span class="gc-yr">2028</span></div>
+          <div class="gc-bar"><span class="gc-val">US$ 68,6 bi</span><div class="gc-fill" style="height:84%"></div><span class="gc-yr">2030</span></div>
+          <div class="gc-bar"><span class="gc-val">US$ 81,8 bi</span><div class="gc-fill gc-fill-peak" style="height:100%"></div><span class="gc-yr">2032</span></div>
+        </div>
+        <p class="gc-source">Mercado global de tecnologia para RH (CAGR 9,2% a.a.). Fonte: Fortune Business Insights, 2025.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -118,6 +134,9 @@ DECISÕES ACONTECEM</h2>
       </div>
     </div>
     <div class="sp-track" id="spTrack"></div>
+    <div style="text-align:center; margin-top:36px">
+      <button type="button" class="btn btn-action btn-lg" onclick="openLeadModal()">Quero patrocinar o RH Summit ↗</button>
+    </div>
   </div>
 </section>
 
@@ -129,6 +148,9 @@ DECISÕES ACONTECEM</h2>
       <h2 class="display" style="font-size:clamp(32px,4.2vw,56px); margin-top:12px">Marcas que estiveram <span class="pink">com a gente</span></h2>
     </div>
     <div class="brand-grid" id="brandGrid"></div>
+    <div style="text-align:center; margin-top:36px">
+      <button type="button" class="btn btn-action btn-lg" onclick="openLeadModal()">Quero patrocinar o RH Summit ↗</button>
+    </div>
   </div>
 </section>
 
@@ -147,6 +169,9 @@ DECISÕES ACONTECEM</h2>
       </div>
     </div>
     <div class="mv-track" id="stTrack"></div>
+    <div style="text-align:center; margin-top:36px">
+      <button type="button" class="btn btn-action btn-lg" onclick="openLeadModal()">Quero patrocinar o RH Summit ↗</button>
+    </div>
   </div>
 </section>
 
@@ -160,6 +185,7 @@ DECISÕES ACONTECEM</h2>
         <p class="lead" style="margin-top:18px; font-size:17px; max-width:440px">
           Um público sênior, decisor e estratégico — exatamente quem sua solução de RH precisa alcançar.
         </p>
+        <button type="button" class="btn btn-action btn-lg" style="margin-top:24px" onclick="openLeadModal()">Quero patrocinar o RH Summit ↗</button>
       </div>
       <div class="bars">
         <div class="bar-row"><div class="top"><span>C-level &amp; Diretoria (CHRO, VP, Diretor)</span><b>58%</b></div><div class="track"><div class="fill" style="width:58%; background:var(--rh-pink)"></div></div></div>
@@ -184,24 +210,28 @@ DECISÕES ACONTECEM</h2>
         <h3 style="color:#C7C7CF">Prata</h3>
         <div class="desc">Presença essencial na feira e na comunicação.</div>
         <ul><li><span class="d">●</span>Estande na feira</li><li><span class="d">●</span>Logo no site &amp; app</li><li><span class="d">●</span>Relatório de leads</li><li><span class="d">●</span>4 ingressos cortesia</li></ul>
+        <button type="button" class="btn btn-ghost" style="width:100%; justify-content:center; margin-top:20px" onclick="openLeadModal('Prata')">Quero essa cota ↗</button>
       </div>
       <div class="tier">
         <span class="badge" style="background:rgba(95,192,147,.18); color:var(--rh-green)">Cota Ouro</span>
         <h3 style="color:var(--rh-green)">Ouro</h3>
         <div class="desc">Mais destaque, conteúdo e geração de demanda.</div>
         <ul><li><span class="d">●</span>Tudo da Prata</li><li><span class="d">●</span>Estande ampliado</li><li><span class="d">●</span>Ativação patrocinada</li><li><span class="d">●</span>10 ingressos cortesia</li></ul>
+        <button type="button" class="btn btn-ghost" style="width:100%; justify-content:center; margin-top:20px" onclick="openLeadModal('Ouro')">Quero essa cota ↗</button>
       </div>
       <div class="tier feat">
         <span class="badge" style="background:#fff; color:var(--rh-navy)">Mais procurada</span>
         <h3 style="color:#fff">Diamante</h3>
         <div class="desc" style="color:rgba(255,255,255,.85)">Protagonismo no palco e na marca do evento.</div>
         <ul><li><span class="d">●</span>Tudo do Ouro</li><li><span class="d">●</span>Palestra / painel no palco</li><li><span class="d">●</span>Roundtable exclusiva</li><li><span class="d">●</span>Marca em destaque nas peças</li><li><span class="d">●</span>25 ingressos cortesia</li></ul>
+        <button type="button" class="btn btn-action" style="width:100%; justify-content:center; margin-top:20px" onclick="openLeadModal('Diamante')">Quero essa cota ↗</button>
       </div>
       <div class="tier">
         <span class="badge" style="background:rgba(247,34,156,.18); color:var(--rh-pink-light)">Realizadores</span>
         <h3 style="color:var(--rh-pink-light)">Master</h3>
         <div class="desc">Co-realização: a maior associação com o evento.</div>
         <ul><li><span class="d">●</span>Tudo do Diamante</li><li><span class="d">●</span>Naming de arena / espaço</li><li><span class="d">●</span>Co-criação de conteúdo</li><li><span class="d">●</span>Pacote sob medida</li></ul>
+        <button type="button" class="btn btn-ghost" style="width:100%; justify-content:center; margin-top:20px" onclick="openLeadModal('Master')">Quero essa cota ↗</button>
       </div>
     </div>
     <p style="text-align:center; color:var(--text-muted); font-size:14px; margin-top:28px">Valores e ativos detalhados na proposta. Cotas personalizáveis conforme o objetivo da sua marca.</p>
@@ -232,6 +262,25 @@ DECISÕES ACONTECEM</h2>
         <div class="who"><div class="qav" style="background:var(--rh-green)">CF</div><div><b>Carla Freitas</b><span>VP de Vendas · patrocinador Master</span></div></div>
       </div>
     </div>
+    <div style="text-align:center; margin-top:36px">
+      <button type="button" class="btn btn-action btn-lg" onclick="openLeadModal()">Quero patrocinar o RH Summit ↗</button>
+    </div>
+  </div>
+</section>
+
+<!-- Depoimento em vídeo -->
+<section class="sec-pad" id="depoimento-video">
+  <div class="wrap">
+    <div class="kicker-h" style="text-align:center; margin-bottom:36px">
+      <div class="eyebrow">Direto de quem já patrocinou</div>
+      <h2 class="display" style="font-size:clamp(32px,4.4vw,58px); margin-top:12px; max-width:820px; margin-left:auto; margin-right:auto">Opinião sincera de quem já patrocinou <span class="pink">(e faturou!)</span> com o RH Summit</h2>
+    </div>
+    <div class="video-frame">
+      <iframe src="https://www.youtube.com/embed/Ix4ukGwbLLI" title="Depoimento de patrocinador do RH Summit" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <div style="text-align:center; margin-top:36px">
+      <button type="button" class="btn btn-action btn-lg" onclick="openLeadModal()">Quero patrocinar o RH Summit ↗</button>
+    </div>
   </div>
 </section>
 
@@ -247,7 +296,7 @@ DECISÕES ACONTECEM</h2>
           Garanta seu lugar entre o público mais qualificado de RH do Brasil. Os melhores espaços vão rápido — fale com o time comercial agora.
         </p>
         <div style="margin-top:32px; display:flex; gap:14px; justify-content:center; flex-wrap:wrap">
-          <a href="#top" class="btn btn-action btn-lg">Quero garantir minha cota ↗</a>
+          <button type="button" class="btn btn-action btn-lg" onclick="openLeadModal()">Quero garantir minha cota ↗</button>
           <a href="#cotas" class="btn btn-ghost btn-lg">Ver cotas</a>
         </div>
       </div>
@@ -270,6 +319,44 @@ DECISÕES ACONTECEM</h2>
   </div>
   <div class="copy">© 2027 RH Summit · Resultado com humanidade é legado.</div>
 </footer>
+
+<!-- Modal de patrocínio (aberto pelos CTAs distribuídos pela página) -->
+<div class="modal-overlay" id="leadModal" onclick="if(event.target===this) closeLeadModal()">
+  <div class="modal-card formcard formcard-feat">
+    <button type="button" class="modal-close" aria-label="Fechar" onclick="closeLeadModal()">✕</button>
+    <h3>Quero patrocinar</h3>
+    <form id="leadFormModal" onsubmit="return submitLead(event)">
+      <input type="hidden" name="cota" value="">
+      <div class="field full"><label>Nome</label><input name="nome" placeholder="Seu nome completo" required></div>
+      <div class="field"><label>E-mail corporativo</label><input name="email" type="email" placeholder="voce@empresa.com" required></div>
+      <div class="field"><label>WhatsApp</label><input name="whatsapp" placeholder="(11) 99999-9999" required></div>
+      <div class="field"><label>Funcionários</label>
+        <select name="funcionarios" required>
+          <option value="" selected disabled>Selecione</option>
+          <option>1 — 50</option>
+          <option>51 — 200</option>
+          <option>201 — 1.000</option>
+          <option>1.001 — 5.000</option>
+          <option>5.000+</option>
+        </select>
+      </div>
+      <div class="field"><label>Faturamento anual</label>
+        <select name="faturamento" required>
+          <option value="" selected disabled>Selecione</option>
+          <option>Até R$ 5 mi</option>
+          <option>R$ 5 mi — R$ 50 mi</option>
+          <option>R$ 50 mi — R$ 300 mi</option>
+          <option>R$ 300 mi — R$ 1 bi</option>
+          <option>R$ 1 bi+</option>
+        </select>
+      </div>
+      <div class="field full"><label>Por que você quer patrocinar o RH Summit?</label>
+        <textarea name="motivo" placeholder="Conte seu objetivo: geração de leads, branding, lançamento de produto…" required></textarea>
+      </div>
+      <div class="field full"><button type="submit" class="btn btn-action btn-lg" style="width:100%; justify-content:center">Quero patrocinar o RH Summit ↗</button></div>
+    </form>
+  </div>
+</div>
 
 <script src="app.js"></script>
 

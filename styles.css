@@ -36,13 +36,16 @@
   .hero-bg { position: absolute; inset: 0; background: var(--rh-gradient-event); opacity: .92; }
   .hero-photo { position: absolute; inset: 0; background: url("assets/photos/feira.jpg") center/cover; opacity: .12; mix-blend-mode: luminosity; }
   .hero-glow { position: absolute; inset: 0; background: radial-gradient(60% 60% at 18% 12%, rgba(173,64,255,.4), transparent 62%); }
-  .hero-inner { position: relative; padding: 70px 0 84px; display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 56px; align-items: center; }
+  .hero-inner { position: relative; padding: 70px 0 84px; display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 56px; align-items: center; }
+  .hero-logo { height: 38px; width: auto; margin-bottom: 22px; }
 
   /* lead form */
   .formcard { background: rgba(11,11,45,.55); border: 1.5px solid var(--border-on-dark); border-radius: 28px; padding: 30px; backdrop-filter: blur(8px); box-shadow: var(--shadow-card); }
   .formcard h3 { font-family: var(--font-display); font-weight: 800; text-transform: uppercase; font-size: 28px; margin: 0 0 4px; }
   .formcard .fsub { color: var(--text-body); font-size: 14px; margin: 0 0 20px; }
-  form { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; }
+  .formcard-feat { padding: 42px; border-radius: 32px; border: 2px solid rgba(95,192,147,.45); box-shadow: var(--glow-purple), 0 0 0 8px rgba(95,192,147,.06); }
+  .formcard-feat h3 { font-size: 36px; margin-bottom: 20px; }
+  form { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; margin-top: 18px; }
   .field { display: flex; flex-direction: column; gap: 6px; }
   .field.full { grid-column: span 2; }
   label { font-size: 12.5px; font-weight: 600; color: rgba(255,255,255,.82); }
@@ -90,6 +93,30 @@
   .ti-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
   .ti-img { border-radius: var(--radius-card); overflow: hidden; box-shadow: var(--shadow-card); aspect-ratio: 4 / 3; }
   .ti-img img { width: 100%; height: 100%; object-fit: cover; }
+
+  /* growth chart (mercado de RH) */
+  .growth-chart { background: var(--rh-gradient-spotlight); padding: 32px 28px; display: flex; flex-direction: column; }
+  .gc-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+  .gc-kicker { font-weight: 600; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,.85); }
+  .gc-title { font-family: var(--font-display); font-weight: 800; text-transform: uppercase; font-size: 22px; color: var(--rh-green); }
+  .gc-bars { flex: 1; display: grid; grid-template-columns: repeat(5, 1fr); align-items: end; gap: 10px; margin-top: 24px; }
+  .gc-bar { display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; gap: 8px; }
+  .gc-val { font-size: 11px; color: #fff; font-weight: 700; white-space: nowrap; }
+  .gc-fill { width: 100%; max-width: 38px; border-radius: 8px 8px 2px 2px; background: rgba(255,255,255,.35); }
+  .gc-fill-peak { background: var(--rh-green); }
+  .gc-yr { font-size: 12px; color: rgba(255,255,255,.7); }
+  .gc-source { margin-top: 18px; font-size: 11.5px; color: rgba(255,255,255,.6); line-height: 1.4; }
+
+  /* video testimonial */
+  .video-frame { position: relative; max-width: 880px; margin: 0 auto; border-radius: var(--radius-card); overflow: hidden; box-shadow: var(--shadow-card); aspect-ratio: 16 / 9; background: var(--rh-navy-700); }
+  .video-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+
+  /* lead modal */
+  .modal-overlay { position: fixed; inset: 0; background: rgba(5,5,20,.78); backdrop-filter: blur(4px); display: none; align-items: center; justify-content: center; padding: 24px; z-index: 1000; overflow-y: auto; }
+  .modal-overlay.open { display: flex; }
+  .modal-card { position: relative; width: 100%; max-width: 640px; max-height: 90vh; overflow-y: auto; margin: auto; }
+  .modal-close { position: absolute; top: 18px; right: 18px; width: 36px; height: 36px; border-radius: 50%; border: 1.5px solid var(--border-on-dark); background: var(--rh-navy-700); color: #fff; cursor: pointer; font-size: 15px; display: flex; align-items: center; justify-content: center; }
+  .modal-close:hover { background: var(--rh-pink); border-color: var(--rh-pink); }
 
   /* estandes cards (3:4) */
   .st-card { flex: none; width: 340px; aspect-ratio: 3 / 4; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-card); }
@@ -142,10 +169,17 @@
     .stats-grid, .tiers, .quotes { grid-template-columns: repeat(2, 1fr); }
     .brand-grid { grid-template-columns: repeat(4, 1fr); }
     .profile, .ti-grid { grid-template-columns: 1fr; gap: 32px; }
+    .formcard-feat { padding: 30px; }
+    .formcard-feat h3 { font-size: 28px; }
   }
   @media (max-width: 600px) {
     form { grid-template-columns: 1fr; }
     .field.full { grid-column: span 1; }
     .stats-grid, .tiers, .quotes { grid-template-columns: 1fr; }
     .brand-grid { grid-template-columns: repeat(2, 1fr); }
+    .formcard-feat { padding: 22px; border-radius: 24px; }
+    .gc-bars { gap: 4px; }
+    .gc-val { font-size: 9px; }
+    .gc-yr { font-size: 10px; }
+    .modal-card { max-height: 95vh; }
   }
